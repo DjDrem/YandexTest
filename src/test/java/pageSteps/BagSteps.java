@@ -11,13 +11,17 @@ public class BagSteps {
         bugTheme.sendKeys(theme);
         descriptionBug.click();
         descriptionBug.sendKeys(description);
+        environmentBug.click();
         environmentBug.sendKeys(environment);
+        buttonAppointMe.click();
         createButon.click();
     }
-//    @Step
-//    public static void changestatusBag (){
-//
-//    }
+
+    @Step
+    public static void changestatusBag (){
+
+    }
+
 //    @Step
 //    public static void closeBag (){
 //

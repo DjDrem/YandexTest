@@ -5,9 +5,9 @@ import org.junit.Test;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
+import static pageElements.BagElements.openTask;
 import static pageElements.CurrentTasksElements.numberRunningTask;
-import static pageElements.DashboardElements.desktopTab;
-import static pageElements.DashboardElements.projectTab;
+import static pageElements.DashboardElements.*;
 import static pageElements.TestSeleniumElements.*;
 import static pageSteps.BagSteps.createBag;
 import static pageSteps.CurrentTasksSteps.numberTask;
@@ -61,5 +61,9 @@ public class JiraTest extends WebHooks {
     public void bugCreate(){
         loginJira(login, password);
         createBag(theme, description, environnment);
+        tasksTab.click();
+        openTask.click();
+        sleep(2000);
+        Assert.assertEquals("Сделать", statusTask.getValue());
     }
 }
