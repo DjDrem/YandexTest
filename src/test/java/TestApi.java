@@ -9,6 +9,7 @@ import static apiSteps.createUsers.userCreate;
 import static apiSteps.findInfoCharacter.infoCharacters;
 import static apiSteps.getLastCharacter.gettingLastCharacterID;
 import static apiSteps.getLastCharacter.infoLastCharacters;
+import static apiSteps.loginJira.jiraLogin;
 import static apiSteps.selectLastEpisode.selectEpisode;
 
 public class TestApi {
@@ -38,5 +39,9 @@ public class TestApi {
     @Test
     public void testUserCreate() throws IOException {
         userCreate();
+    }
+    @Test
+    public void testLoginJira() throws IOException {
+        jiraLogin();
     }
 }
