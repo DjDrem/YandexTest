@@ -1,8 +1,11 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static apiSteps.checkLocation.*;
 import static apiSteps.checkSpecies.*;
+import static apiSteps.createUsers.userCreate;
 import static apiSteps.findInfoCharacter.infoCharacters;
 import static apiSteps.getLastCharacter.gettingLastCharacterID;
 import static apiSteps.getLastCharacter.infoLastCharacters;
@@ -23,13 +26,17 @@ public class TestApi {
         infoLastCharacters();
     }
     @Test
-    public void checkSpecies(){
+    public void testCheckSpecies(){
         chekingSpesies("2", "825");
         Assert.assertEquals(firstSpecies, secondSpecies);
     }
     @Test
-    public void checkLocation(){
+    public void testCheckLocation(){
         chekingLocation("2", "825");
         Assert.assertEquals("Местоположение персонажей", firstLocation, secondLocation);
+    }
+    @Test
+    public void testUserCreate() throws IOException {
+        userCreate();
     }
 }
