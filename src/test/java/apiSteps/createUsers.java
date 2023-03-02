@@ -1,6 +1,8 @@
 package apiSteps;
 
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 import org.junit.Assert;
 
@@ -11,13 +13,17 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class createUsers {
+
+    private static RequestSpecification reqSpec = new RequestSpecBuilder()
+            .setBaseUri("https://reqres.in/api")
+            .build();
     public static void userCreate() throws IOException {
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/test/resources/json/api.json"))));
         body.put("name", "Tomato");
         body.put("job", "Eat maket");
         Response sendJson = given()
                 .header("Content-type","application/json")
-                .baseUri("https://reqres.in/api")
+                .spec(reqSpec)
                 .body(body.toString())
                 .when()
                 .put("/users/")

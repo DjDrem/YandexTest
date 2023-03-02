@@ -1,5 +1,6 @@
 package apiSteps;
 
+import io.qameta.allure.Step;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -21,11 +22,12 @@ public class rickAndMorty {
     public static String charLastSpecies;
     public static String charLastLocation;
     public static int idCharacter;
-    public static void findInformationCharacter(String id){
-        RequestSpecification reqSpecFirst = new RequestSpecBuilder()
-                .setBaseUri("https://rickandmortyapi.com/api")
-                .build();
 
+    private static RequestSpecification reqSpecFirst = new RequestSpecBuilder()
+            .setBaseUri("https://rickandmortyapi.com/api")
+            .build();
+
+    public static void findInformationCharacter(String id){
         Response infoCharacter = given()
                 .spec(reqSpecFirst)
                 .when()
@@ -49,13 +51,10 @@ public class rickAndMorty {
         System.out.println("Количество эпизодов - " + charEpisode);
         System.out.println("Статус - " + charStatus);
     }
-    public static void selectEpisode() {
-        RequestSpecification reqSpecSecond = new RequestSpecBuilder()
-                .setBaseUri("https://rickandmortyapi.com/api")
-                .build();
 
+    public static void selectEpisode() {
         Response gettingLastEpisode = given()
-                .spec(reqSpecSecond)
+                .spec(reqSpecFirst)
                 .when()
                 .get("/character/" + charId)
                 .then()
@@ -66,13 +65,10 @@ public class rickAndMorty {
                 .getJSONArray("episode").get(episode).toString().replaceAll("[^0-9]", ""));
         System.out.println("Последний эпизод с участием - " + lastEpisode);
     }
-    public static void gettingLastCharacterID(){
-        RequestSpecification reqSpecThird = new RequestSpecBuilder()
-                .setBaseUri("https://rickandmortyapi.com/api")
-                .build();
 
+    public static void gettingLastCharacterID(){
         Response gettingCharacter = given()
-                .spec(reqSpecThird)
+                .spec(reqSpecFirst)
                 .when()
                 .get("/episode/" + lastEpisode)
                 .then()
@@ -82,14 +78,11 @@ public class rickAndMorty {
         idCharacter = Integer.parseInt(new JSONObject(gettingCharacter.getBody().asString()).getJSONArray("characters")
                 .get(lastCharacter).toString().replaceAll("[^0-9]", ""));
     }
-    public static void infoLastCharacters(){
-        RequestSpecification reqSpecThirdFourth = new RequestSpecBuilder()
-                .setBaseUri("https://rickandmortyapi.com/api")
-                .build();
 
+    public static void infoLastCharacters(){
         String characterId = Integer.toString(idCharacter);
         Response infoLastCharacter = given()
-                .spec(reqSpecThirdFourth)
+                .spec(reqSpecFirst)
                 .when()
                 .get("/character/" + characterId)
                 .then()
