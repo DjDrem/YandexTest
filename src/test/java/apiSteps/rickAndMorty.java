@@ -27,6 +27,7 @@ public class rickAndMorty {
             .setBaseUri("https://rickandmortyapi.com/api")
             .build();
 
+   @Step("Поиск персонажа по ID {id}")
     public static void findInformationCharacter(String id){
         Response infoCharacter = given()
                 .spec(reqSpecFirst)
@@ -52,6 +53,7 @@ public class rickAndMorty {
         System.out.println("Статус - " + charStatus);
     }
 
+    @Step("Выбор эпизода")
     public static void selectEpisode() {
         Response gettingLastEpisode = given()
                 .spec(reqSpecFirst)
@@ -66,6 +68,7 @@ public class rickAndMorty {
         System.out.println("Последний эпизод с участием - " + lastEpisode);
     }
 
+    @Step("Получение id последнего персонажа")
     public static void gettingLastCharacterID(){
         Response gettingCharacter = given()
                 .spec(reqSpecFirst)
@@ -79,6 +82,7 @@ public class rickAndMorty {
                 .get(lastCharacter).toString().replaceAll("[^0-9]", ""));
     }
 
+    @Step("Отображение информации последнего персонажа")
     public static void infoLastCharacters(){
         String characterId = Integer.toString(idCharacter);
         Response infoLastCharacter = given()

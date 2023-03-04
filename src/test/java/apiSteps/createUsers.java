@@ -1,5 +1,6 @@
 package apiSteps;
 
+import io.qameta.allure.Step;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -17,6 +18,7 @@ public class createUsers {
     private static RequestSpecification reqSpec = new RequestSpecBuilder()
             .setBaseUri("https://reqres.in/api")
             .build();
+    @Step("Создание пользователя")
     public static void userCreate() throws IOException {
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/test/resources/json/api.json"))));
         body.put("name", "Tomato");

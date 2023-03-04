@@ -1,10 +1,12 @@
 package apiSteps;
 
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import static io.restassured.RestAssured.given;
 
 public class loginJira {
+    @Step("Авторизация пользователя в jira")
     public static void jiraLogin() {
         Response loginUser = given()
                 .baseUri("https://edujira.ifellow.ru/rest/auth/1/session")
