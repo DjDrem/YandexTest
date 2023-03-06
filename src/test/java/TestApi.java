@@ -1,18 +1,16 @@
 import io.qameta.allure.*;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import static apiSteps.createUsers.userCreate;
 import static apiSteps.loginJira.jiraLogin;
 import static apiSteps.rickAndMorty.*;
 
-@DisplayName("Тестирование Api")
+
 @Feature("Api")
 public class TestApi {
     @Test
-    @DisplayName("Проверка информации о персонажах")
     @Story("info character")
     @Description("Поиск персонажа по id, выбор крайнего эпизода, поиск последнего персонажа в этом эпизоде, " +
             "вывод информации и сравнение локации и рассы персрнажей")
