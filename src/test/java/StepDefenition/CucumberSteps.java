@@ -1,9 +1,11 @@
 package StepDefenition;
 
+
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import io.qameta.allure.Step;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 public class CucumberSteps {
     private static double x;
@@ -11,7 +13,7 @@ public class CucumberSteps {
 
     @Step("Ввод числа {first}")
     @Когда("^Пользователь вводит x (.*)$")
-        public static void readX(Double first){
+    public static void readX(Double first){
         x = first;
         Assert.assertEquals("Значение Х ", x == first);
     }
@@ -21,6 +23,7 @@ public class CucumberSteps {
     @Когда("^Пользователь вводит y (.*)$")
     public static void readY(Double second){
         y = second;
+        Assertions.assertEquals("Значение Y", y == second);
     }
 
     @Step("Вывод результата сложения {x} и {y}")

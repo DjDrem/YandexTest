@@ -5,6 +5,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
@@ -14,11 +15,11 @@ import org.junit.runner.RunWith;
 
 public class RunnerTest {
     @BeforeClass
-    public static void before(){
+    public static void before() {
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide().
-                screenshots(true).
-                savePageSource(true)
+                        screenshots(true).
+                        savePageSource(true)
         );
     }
 }
