@@ -1,5 +1,4 @@
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.cucumber.core.snippets.SnippetType;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import io.qameta.allure.selenide.AllureSelenide;
