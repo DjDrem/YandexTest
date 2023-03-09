@@ -3,33 +3,29 @@ package StepDefenition;
 
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.allure.Step;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 
 public class CucumberSteps {
     private static double x;
     private static double y;
 
-    @Step("Ввод числа {first}")
-    @Когда("^Пользователь вводит x (.*)$")
+    @Когда("^Пользователь вводит x = (.*)$")
     public static void readX(Double first){
         x = first;
         Assert.assertEquals("Значение Х ", x == first);
     }
 
-
-    @Step(value = "Ввод числа {second}")
-    @Когда("^Пользователь вводит y (.*)$")
+    @Когда("^Пользователь вводит y = (.*)$")
     public static void readY(Double second){
         y = second;
-        Assertions.assertEquals("Значение Y", y == second);
+        Assert.assertEquals("Значение Y", y == second);
     }
 
-    @Step("Вывод результата сложения {x} и {y}")
-    @Тогда("^Получить сумму$")
+    @Тогда("^Получить сумму (.*)$")
     public static void sum (){
-        System.out.println("Сумма чисел равна : " + (x + y));
+        int result = (int)(x + y);
+        System.out.println("Сумма чисел равна : " + result);
+        Assert.assertEquals((x + y), result);
     }
 }
 
