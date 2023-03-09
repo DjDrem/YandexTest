@@ -14,21 +14,4 @@ public class WebHooks {
                         savePageSource(true)
         );
     }
-//    @BeforeEach
-//    public void allureParallel(){
-//        Configuration.reportsFolder = "target/reports";
-//        = new
-//        String listenerName = "AllureSelenide";
-//        new AllureSelenide().screenshots(true).
-//                savePageSource(false);
-//    }
-//
-//    @AfterEach
-//    public void driverClose(){
-//        WebDriverRunner.closeWebDriver();
-//    }
-//    @AfterEach
-//    public static void after(){
-//
-//    }
 }
