@@ -1,6 +1,5 @@
 package apiSteps;
 
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
