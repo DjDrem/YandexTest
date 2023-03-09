@@ -27,7 +27,7 @@ public class rickAndMorty {
             .setBaseUri("https://rickandmortyapi.com/api")
             .build();
 
-   @Step("Поиск персонажа по ID {id}")
+   @Step("Поиск персонажа по ID = {id}")
     public static void findInformationCharacter(String id){
         Response infoCharacter = given()
                 .spec(reqSpecFirst)
@@ -53,12 +53,12 @@ public class rickAndMorty {
         System.out.println("Статус - " + charStatus);
     }
 
-    @Step("Выбор эпизода")
-    public static void selectEpisode() {
+    @Step("Выбор последнего эпизода с участием персонажа с ID = {id}")
+    public static void selectEpisode(String id) {
         Response gettingLastEpisode = given()
                 .spec(reqSpecFirst)
                 .when()
-                .get("/character/" + charId)
+                .get("/character/" + id)
                 .then()
                 .extract()
                 .response();
@@ -68,12 +68,12 @@ public class rickAndMorty {
         System.out.println("Последний эпизод с участием - " + lastEpisode);
     }
 
-    @Step("Получение id последнего персонажа")
-    public static void gettingLastCharacterID(){
+    @Step("Получение ID последнего персонажа из эпизода {episode}")
+    public static void gettingLastCharacterID(int episode){
         Response gettingCharacter = given()
                 .spec(reqSpecFirst)
                 .when()
-                .get("/episode/" + lastEpisode)
+                .get("/episode/" + episode)
                 .then()
                 .extract()
                 .response();
@@ -82,13 +82,13 @@ public class rickAndMorty {
                 .get(lastCharacter).toString().replaceAll("[^0-9]", ""));
     }
 
-    @Step("Отображение информации последнего персонажа")
-    public static void infoLastCharacters(){
-        String characterId = Integer.toString(idCharacter);
+    @Step("Отображение информации последнего персонажа с ID = {id}")
+    public static void infoLastCharacters(int id){
+        String characterId = Integer.toString(id);
         Response infoLastCharacter = given()
                 .spec(reqSpecFirst)
                 .when()
-                .get("/character/" + characterId)
+                .get("/character/" + id)
                 .then()
                 .extract()
                 .response();
@@ -101,5 +101,6 @@ public class rickAndMorty {
         System.out.println("Имя - " + charLastName);
         System.out.println("Расса - " + charLastSpecies);
         System.out.println("Локация - " + charLastLocation);
-    }
+   }
 }
+

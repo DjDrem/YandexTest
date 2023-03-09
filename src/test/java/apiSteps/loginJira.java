@@ -6,14 +6,16 @@ import org.json.JSONObject;
 import static io.restassured.RestAssured.given;
 
 public class loginJira {
-    @Step("Авторизация пользователя в jira")
+    private static String login = "nkiselev";
+    private static String password = "Qwerty123";
+    @Step(value = "Авторизация пользователя в jira, ввод логина и пароля")
     public static void jiraLogin() {
         Response loginUser = given()
                 .baseUri("https://edujira.ifellow.ru/rest/auth/1/session")
                 .header("Content-type", "application/json")
                 .auth()
                 .preemptive()
-                .basic("nkiselev", "Qwerty123")
+                .basic(login, password)
                 .when()
                 .get()
                 .then()

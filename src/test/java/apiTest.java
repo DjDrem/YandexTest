@@ -1,3 +1,4 @@
+import hooks.ApiHooks;
 import io.qameta.allure.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +11,7 @@ import static apiSteps.rickAndMorty.*;
 
 
 @Feature("Api")
-public class TestApi {
+public class apiTest extends ApiHooks {
     @Test
     @DisplayName("Тест Рик и Морти")
     @Epic("Рик и Морти")
@@ -19,9 +20,9 @@ public class TestApi {
             "вывод информации и сравнение локации и рассы персрнажей")
     public void testRickAndMorty(){
         findInformationCharacter("2");
-        selectEpisode();
-        gettingLastCharacterID();
-        infoLastCharacters();
+        selectEpisode(charId);
+        gettingLastCharacterID(lastEpisode);
+        infoLastCharacters(idCharacter);
         Assert.assertEquals("Расса персонажей",charSpecies, charLastSpecies);
         Assert.assertEquals("Местоположение персонажей", charLocation, charLastLocation);
     }
